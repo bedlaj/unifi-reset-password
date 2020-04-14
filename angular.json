@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "unifi-reset": {
+    "unifi-reset-password": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {

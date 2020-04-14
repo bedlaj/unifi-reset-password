@@ -33,6 +33,18 @@
           </div>
           <div class="row">
             <div class="col">
+              <mat-radio-group formControlName="user">
+                <mat-radio-button value="existing">
+                  Existing user
+                </mat-radio-button>
+                <mat-radio-button value="new">
+                  New user
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
               <mat-form-field class="full-width">
                 <input matInput placeholder="Password" formControlName="password" autocomplete="off">
               </mat-form-field>
