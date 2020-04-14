@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Test
+        run: |
+          npm install -g @angular/cli
+          npm install
+          npm run-script test-headless
+      - name: Build
+        run: |
+          npm install -g @angular/cli
+          npm install
+          ng build --prod --base-href="/unifi-reset-password/"
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v2
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: dist/unifi-reset-password
