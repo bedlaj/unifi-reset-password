@@ -57,6 +57,7 @@ p {
   max-width: 960px;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 
 svg.material-icons {
@@ -216,11 +217,13 @@ footer {
   display: flex;
   align-items: center;
   line-height: 20px;
+  color: white;
 }
 
 footer a {
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .github-star-badge {
