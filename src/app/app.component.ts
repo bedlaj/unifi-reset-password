@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
   private static randomSalt() {
     const alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./';
-    const length = 8 + Math.random() * 8;
+    const length = 12;
     let result = '';
     for (let i = length; i > 0; --i) {
       result += alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -75,21 +75,18 @@ export class AppComponent implements OnInit {
     } else {
       this.terminalOut =
         `mongo --quiet --port ${form.value.mongoPort} --eval '
-var admin_id = db.${collection}.insertOne(
- {"email" : "${username}@localhost",
-  "last_site_name" : "default",
-  "name" : "${username}",
-  "time_created" : NumberLong(${this.unixTimestamp}),
-  "x_shadow" : "${passwordHash}"}
-  )["insertedId"].str;
-if (db.site.count() > 0) {
- db.site.find().forEach(function(d) {
+ var admin_id = db.${collection}.insertOne({
+  "email" : "${username}@localhost", "last_site_name" : "default", "name" : "${username}", "time_created" : NumberLong(${this.unixTimestamp}),
+  "x_shadow" : "${passwordHash}"
+ })["insertedId"].str;
+ if (db.site.count() > 0) {
+  db.site.find().forEach(function(d) {
    db.privilege.insert({ "admin_id" : admin_id, "permissions" : [ ], "role" : "admin", "site_id" : d["_id"].str });
    print("Access granted to site " + d.name)
- });
-} else {
- print("No sites available.");
-}' ${db}`;
+  });
+ } else {
+  print("No sites available.");
+ }' ${db}`;
     }
 }
 }
