@@ -1,4 +1,6 @@
-![Build, lint, test and deploy to GitHub Pages](https://github.com/bedlaj/unifi-reset-password/workflows/Build,%20lint,%20test%20and%20deploy%20to%20GitHub%20Pages/badge.svg)
+![Lint](https://github.com/bedlaj/unifi-reset-password/workflows/Lint/badge.svg)
+![Build](https://github.com/bedlaj/unifi-reset-password/workflows/Build/badge.svg)
+![Test and Deploy to GH pages](https://github.com/bedlaj/unifi-reset-password/workflows/Test%20and%20Deploy%20to%20GH%20pages/badge.svg)
 
 # Unifi reset admin password
 
