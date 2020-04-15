@@ -9,8 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { ClipboardModule } from 'ngx-clipboard';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     MatRadioModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatSlideToggleModule,
-    ClipboardModule
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
