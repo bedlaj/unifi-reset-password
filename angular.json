@@ -32,7 +32,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/lib/sha512.js"
+              "src/utils/sha512.js"
             ]
           },
           "configurations": {
@@ -99,7 +99,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/lib/sha512.js"
+              "src/utils/sha512.js"
             ]
           }
         },
