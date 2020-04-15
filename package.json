@@ -1,6 +1,7 @@
 {
   "name": "unifi-reset-password",
   "version": "0.0.1",
+  "author": "Jan Bednar <public@janbednar.eu> (http://janbednar.eu)",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "test-headless": "ng test --watch=false --progress=false --browsers=ChromeHeadless"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bedlaj/unifi-password-reset.git"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +28,7 @@
     "@material-icons/font": "^1.0.0",
     "@openfonts/roboto_latin": "^1.44.0",
     "rxjs": "~6.5.4",
+    "sha512-crypt-ts": "latest",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

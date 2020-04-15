@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Template} from '../utils/template';
-
-declare var sha512crypt: any;
+import {sha512} from 'sha512-crypt-ts';
 
 @Component({
   selector: 'app-root',
@@ -67,7 +66,7 @@ export class AppComponent implements OnInit {
     if (password in this.hashCache) {
       passwordHash = this.hashCache[password];
     } else {
-      passwordHash = sha512crypt(password, this.salt);
+      passwordHash = sha512.sha512crypt(password, this.salt);
       this.hashCache[password] = passwordHash;
     }
     return passwordHash;

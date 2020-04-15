@@ -32,7 +32,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/utils/sha512.js"
             ]
           },
           "configurations": {
@@ -99,7 +98,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/utils/sha512.js"
             ]
           }
         },
