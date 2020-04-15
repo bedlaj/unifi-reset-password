@@ -1,4 +1,4 @@
-name: Build, lint, test and deploy to GitHub Pages
+name: Test and Deploy to GH pages
 
 on:
   push:
@@ -17,11 +17,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - name: Lint
-        run: |
-          npm install -g @angular/cli
-          npm install
-          npm run-script lint
       - name: Test
         run: |
           npm install -g @angular/cli
