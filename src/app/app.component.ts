@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import {Template} from '../utils/template';
 declare var sha512crypt: any;
 
 @Component({
@@ -73,38 +74,11 @@ export class AppComponent implements OnInit {
 
   private refreshTerminal(form) {
     const passwordHash = this.getHashCached(form.value.password);
-    const db = 'ace';
-    const collection = 'admin';
     const username = form.value.username.replace(/["]/g, '\\"');
 
-    if (form.value.action === 'reset') {
-      this.terminalOut =
-        `mongo --quiet --port ${form.value.mongoPort} --eval '
- if(db.${collection}.update(
-  {name:"${username}"},
-  {$set: {x_shadow:"${passwordHash}"}}
-  )["nMatched"] > 0) {
-   print("User ${username} updated successfully");
- } else {
-  print("User ${username} does not exists.");
-  print("Available users:");
-  db.${collection}.find({},{name: 1}).forEach(function(d) { print("  " + d.name); })
- }' ${db}`;
-    } else {
-      this.terminalOut =
-        `mongo --quiet --port ${form.value.mongoPort} --eval '
- var admin_id = db.${collection}.insertOne({
-  "email" : "${username}@localhost", "last_site_name" : "default", "name" : "${username}", "time_created" : NumberLong(${this.unixTimestamp}),
-  "x_shadow" : "${passwordHash}"
- })["insertedId"].str;
- if (db.site.count() > 0) {
-  db.site.find().forEach(function(d) {
-   db.privilege.insert({ "admin_id" : admin_id, "permissions" : [ ], "role" : "admin", "site_id" : d["_id"].str });
-   print("Access granted to site " + d.name)
-  });
- } else {
-  print("No sites available.");
- }' ${db}`;
+    switch (form.value.action) {
+      case 'reset': this.terminalOut = Template.reset(form.value.mongoPort, username, passwordHash); break;
+      case 'create': this.terminalOut = Template.create(form.value.mongoPort, username, passwordHash, this.unixTimestamp); break;
     }
 }
 }
