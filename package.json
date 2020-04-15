@@ -20,6 +20,8 @@
     "@angular/material": "^9.2.0",
     "@angular/platform-browser": "~9.1.1",
     "@angular/platform-browser-dynamic": "~9.1.1",
+    "@material-icons/font": "^1.0.0",
+    "@openfonts/roboto_latin": "^1.44.0",
     "ngx-clipboard": "^13.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

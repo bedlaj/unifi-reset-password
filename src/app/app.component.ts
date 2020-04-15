@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Template} from '../utils/template';
+
 declare var sha512crypt: any;
 
 @Component({
