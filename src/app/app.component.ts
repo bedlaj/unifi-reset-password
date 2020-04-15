@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
   private static randomSalt() {
     const alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./';
-    const length = 12;
+    const length = 8 + Math.random() * 8;
     let result = '';
     for (let i = length; i > 0; --i) {
       result += alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -38,23 +38,41 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.refreshTerminal(this.inputForm);
     this.inputForm.valueChanges.subscribe(() => {
-      this.refreshTerminal(this.inputForm);
+      if (this.validateInput(this.inputForm)) {
+        this.refreshTerminal(this.inputForm);
+      }
     });
   }
 
-  private refreshTerminal(form) {
+  private validateInput(form) {
     if (form.value.password.length === 0) {
       this.terminalOut = '# Password cannot be empty';
-      return;
+      return false;
     }
+    if (form.value.username.length === 0) {
+      this.terminalOut = '# Username cannot be empty';
+      return false;
+    }
+    if (form.value.mongoPort <= 0 || form.value.mongoPort > 65535) {
+      this.terminalOut = '# MongoDB port must be in range 0-65535';
+      return false;
+    }
+    return true;
+  }
 
+  private getHashCached(password) {
     let passwordHash;
-    if (form.value.password in this.hashCache) {
-      passwordHash = this.hashCache[form.value.password];
+    if (password in this.hashCache) {
+      passwordHash = this.hashCache[password];
     } else {
-      passwordHash = sha512crypt(form.value.password, this.salt);
-      this.hashCache[form.value.password] = passwordHash;
+      passwordHash = sha512crypt(password, this.salt);
+      this.hashCache[password] = passwordHash;
     }
+    return passwordHash;
+  }
+
+  private refreshTerminal(form) {
+    const passwordHash = this.getHashCached(form.value.password);
     const db = 'ace'; // ace
     const collection = 'admin'; // admin
     const username = form.value.username.replace(/["]/g, '\\"');
