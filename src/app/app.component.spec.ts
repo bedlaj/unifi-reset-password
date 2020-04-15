@@ -90,7 +90,7 @@ describe('AppComponent', () => {
     app.inputForm.get('username').setValue('abc');
     app.inputForm.get('password').setValue('def');
     app.inputForm.get('mongoPort').setValue('1234');
-    app.inputForm.get('user').setValue('new');
+    app.inputForm.get('action').setValue('create');
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('#terminal').textContent).toContain('mongo');

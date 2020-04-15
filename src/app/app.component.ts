@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   inputForm = this.fb.group({
     username: ['admin', Validators.required],
-    user: ['existing', Validators.required],
+    action: ['reset', Validators.required],
     password: ['password', Validators.required],
     mongoPort: [27117, Validators.required]
   });
@@ -73,11 +73,11 @@ export class AppComponent implements OnInit {
 
   private refreshTerminal(form) {
     const passwordHash = this.getHashCached(form.value.password);
-    const db = 'ace'; // ace
-    const collection = 'admin'; // admin
+    const db = 'ace';
+    const collection = 'admin';
     const username = form.value.username.replace(/["]/g, '\\"');
 
-    if (form.value.user === 'existing') {
+    if (form.value.action === 'reset') {
       this.terminalOut =
         `mongo --quiet --port ${form.value.mongoPort} --eval '
  if(db.${collection}.update(
