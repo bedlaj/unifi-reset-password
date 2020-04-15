@@ -1,3 +1,5 @@
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/bedlaj/unifi-reset-password.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bedlaj/unifi-reset-password/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/bedlaj/unifi-reset-password.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bedlaj/unifi-reset-password/context:javascript)
 ![Lint](https://github.com/bedlaj/unifi-reset-password/workflows/Lint/badge.svg)
 ![Build](https://github.com/bedlaj/unifi-reset-password/workflows/Build/badge.svg)
 ![Test and Deploy to GH pages](https://github.com/bedlaj/unifi-reset-password/workflows/Test%20and%20Deploy%20to%20GH%20pages/badge.svg)
