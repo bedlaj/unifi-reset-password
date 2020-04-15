@@ -7,8 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { ClipboardModule } from 'ngx-clipboard';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 describe('AppComponent', () => {
@@ -22,8 +21,7 @@ describe('AppComponent', () => {
         MatSelectModule,
         MatRadioModule,
         MatCardModule,
-        MatSlideToggleModule,
-        ClipboardModule
+        MatSlideToggleModule
       ],
       declarations: [
         AppComponent
