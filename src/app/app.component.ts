@@ -76,7 +76,8 @@ export class AppComponent implements OnInit {
     const passwordHash = this.getHashCached(form.value.password);
     const username = form.value.username
         .replace(/[\\]/g, '\\\\')
-        .replace(/["]/g, '\\"');
+        .replace(/["]/g, '\\"')
+        .replace(/[']/g, '\\\'');
 
     switch (form.value.action) {
       case 'reset': this.terminalOut = Template.reset(form.value.mongoPort, username, passwordHash); break;
