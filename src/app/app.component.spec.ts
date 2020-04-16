@@ -80,6 +80,30 @@ describe('AppComponent', () => {
         ' }\' ace');
   });
 
+  it('should escape username', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.salt = 'saltsalt';
+    app.inputForm.get('username').setValue('apostrophe \', backslash \\ and quote "');
+    app.inputForm.get('password').setValue('def');
+    app.inputForm.get('mongoPort').setValue('1234');
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('#terminal').textContent).toContain('mongo');
+    expect(compiled.querySelector('#terminal').textContent)
+      .toBe('mongo --quiet --port 1234 --eval \'\n' +
+        ' if(db.admin.update(\n' +
+        '  {name:"apostrophe \\\', backslash \\\\ and quote \\""},\n' +
+        '  {$set: {x_shadow:"$6$saltsalt$v5q2KC6qDGQ2KBGFXDHm54EUKp7uFrFzr69MsvO.mvTBN3cn1A1ZQk9y33jipzU2B.d7jJth2gPjQFyNn1Okw1"}}\n' +
+        '  )["nMatched"] > 0) {\n' +
+        '   print("User apostrophe \\\', backslash \\\\ and quote \\" updated successfully");\n' +
+        ' } else {\n' +
+        '  print("User apostrophe \\\', backslash \\\\ and quote \\" does not exists.");\n' +
+        '  print("Available users:");\n' +
+        '  db.admin.find({},{name: 1}).forEach(function(d) { print("  " + d.name); })\n' +
+        ' }\' ace');
+  });
+
   it('should render terminal content with custom values new user', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
