@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     return true;
   }
 
-  private getHashCached(password) {
+  getHashCached(password) {
     let passwordHash;
     if (password in this.hashCache) {
       passwordHash = this.hashCache[password];
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
     return passwordHash;
   }
 
-  private refreshTerminal(form) {
+  refreshTerminal(form) {
     const passwordHash = this.getHashCached(form.value.password);
     const username = form.value.username
         .replace(/[\\]/g, '\\\\')

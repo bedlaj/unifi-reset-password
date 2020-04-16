@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import {TestBed, async, tick, fakeAsync} from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
@@ -165,12 +165,43 @@ describe('AppComponent', () => {
     expect(app.terminalOut).toBe('# MongoDB port must be in range 0-65535');
   });
 
-  it('should validate input - high port', () => {
+  it('should validate input - high port', fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+    tick(100);
     app.inputForm.get('mongoPort').setValue('100000');
     expect(app.validateInput(app.inputForm)).toBeFalsy();
+    tick(100);
+    fixture.detectChanges();
+    tick(100);
+    app.inputForm.updateValueAndValidity();
+    tick(100);
     expect(app.terminalOut).toBe('# MongoDB port must be in range 0-65535');
+  }));
+
+  it('should validate input', fakeAsync(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.validateInput(app.inputForm)).toBeTruthy();
+    fixture.detectChanges();
+    tick(100);
+    app.inputForm.get('mongoPort').setValue('12345');
+    tick(100);
+    app.inputForm.updateValueAndValidity();
+    tick(100);
+    expect(app.terminalOut).toContain(12345);
+  }));
+
+  it('should cache password', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.salt = 'saltsalt';
+    app.inputForm.get('mongoPort').setValue('100000');
+    const firstHash = app.getHashCached('a');
+    expect(firstHash).toBe('$6$saltsalt$8gzUrz5S2/0AfMGfui2LllQQ2fwu.jYnAVGef2XY7gAo0jNFrzHsTq9lMr2ze7QvIJxr4BYOKdgDpx4Va9Atb1');
+    app.salt = 'newsalt';
+    const secondHash = app.getHashCached('a');
+    expect(secondHash).toBe(firstHash);
   });
 
   it('should have salt filled', () => {
