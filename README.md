@@ -1,3 +1,4 @@
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![Lint](https://github.com/bedlaj/unifi-reset-password/workflows/Lint/badge.svg)
 ![Build](https://github.com/bedlaj/unifi-reset-password/workflows/Build/badge.svg)
 ![Test and Deploy to GH pages](https://github.com/bedlaj/unifi-reset-password/workflows/Test%20and%20Deploy%20to%20GH%20pages/badge.svg)
