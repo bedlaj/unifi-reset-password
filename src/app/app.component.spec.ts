@@ -132,6 +132,47 @@ describe('AppComponent', () => {
         ' }\' ace');
   });
 
+  it('should validate input - username', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.inputForm.get('username').setValue('');
+    expect(app.validateInput(app.inputForm)).toBeFalsy();
+    expect(app.terminalOut).toBe('# Username cannot be empty');
+    fixture.detectChanges();
+  });
+
+  it('should validate input - password', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.inputForm.get('password').setValue('');
+    expect(app.validateInput(app.inputForm)).toBeFalsy();
+    expect(app.terminalOut).toBe('# Password cannot be empty');
+  });
+
+  it('should validate input - empty port', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.inputForm.get('mongoPort').setValue('');
+    expect(app.validateInput(app.inputForm)).toBeFalsy();
+    expect(app.terminalOut).toBe('# MongoDB port must be in range 0-65535');
+  });
+
+  it('should validate input - zero port', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.inputForm.get('mongoPort').setValue('0');
+    expect(app.validateInput(app.inputForm)).toBeFalsy();
+    expect(app.terminalOut).toBe('# MongoDB port must be in range 0-65535');
+  });
+
+  it('should validate input - high port', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.inputForm.get('mongoPort').setValue('100000');
+    expect(app.validateInput(app.inputForm)).toBeFalsy();
+    expect(app.terminalOut).toBe('# MongoDB port must be in range 0-65535');
+  });
+
   it('should have salt filled', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;

@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private validateInput(form) {
+  validateInput(form) {
     if (form.value.password.length === 0) {
       this.terminalOut = '# Password cannot be empty';
       return false;
