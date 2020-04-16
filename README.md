@@ -1,7 +1,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![Lint](https://github.com/bedlaj/unifi-reset-password/workflows/Lint/badge.svg)
 ![Build](https://github.com/bedlaj/unifi-reset-password/workflows/Build/badge.svg)
-![Test and Deploy to GH pages](https://github.com/bedlaj/unifi-reset-password/workflows/Test%20and%20Deploy%20to%20GH%20pages/badge.svg)
+![Test and deploy](https://github.com/bedlaj/unifi-reset-password/workflows/Test%20and%20deploy/badge.svg)
 [![codecov](https://codecov.io/gh/bedlaj/unifi-reset-password/branch/master/graph/badge.svg)](https://codecov.io/gh/bedlaj/unifi-reset-password)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/bedlaj/unifi-reset-password.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bedlaj/unifi-reset-password/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/bedlaj/unifi-reset-password.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bedlaj/unifi-reset-password/context:javascript)
