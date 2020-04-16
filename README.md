@@ -24,6 +24,3 @@ npm start
 
 # Contributing
 I love contributions. If you have found something missing, or something which could be done better, feel free to fork and open PR.
-
-# Credits
-[sha512.js](https://github.com/bedlaj/unifi-reset-password/blob/master/src/utils/sha512.js) is inspired by [mvo5/sha512crypt-node](https://github.com/mvo5/sha512crypt-node), which is based on [sha512.js by Paul Johnston](http://pajhome.org.uk/crypt/md5/sha512.html)
