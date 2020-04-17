@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
     if (password in this.hashCache) {
       passwordHash = this.hashCache[password];
     } else {
-      passwordHash = sha512.sha512crypt(password, this.salt);
+      passwordHash = sha512.crypt(password, this.salt);
       this.hashCache[password] = passwordHash;
     }
     return passwordHash;
