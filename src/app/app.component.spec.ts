@@ -38,7 +38,7 @@ describe('AppComponent', () => {
   it('should render terminal content', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    app.salt = 'abcdefg';
+    app.salt = 'abcdefgh';
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('#terminal').textContent).toContain('mongo');
@@ -46,7 +46,7 @@ describe('AppComponent', () => {
       .toBe('mongo --quiet --port 27117 --eval \'\n' +
         ' if(db.admin.update(\n' +
         '  {name:"admin"},\n' +
-        '  {$set: {x_shadow:"$6$abcdefg$3X6B9zrxtsDSfe156ekDjYJE5pBAceZ/kH.QSD8ox8dEyWApg7m77P.AVlozLKGG9WTEbwcb/gjbMape6/Ios1"}}\n' +
+        '  {$set: {x_shadow:"$6$abcdefgh$yVfUwsw5T.JApa8POvClA1pQ5peiq97DUNyXCZN5IrF.BMSkiaLQ5kvpuEm/VQ1Tvh/KV2TcaWh8qinoW5dhA1"}}\n' +
         '  )["nMatched"] > 0) {\n' +
         '   print("User admin updated successfully");\n' +
         ' } else {\n' +
