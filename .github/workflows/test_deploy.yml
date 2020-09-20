@@ -22,6 +22,7 @@ jobs:
           npm install -g @angular/cli
           npm install
           npm run-script test
+          npm run-script e2e
           ./node_modules/.bin/codecov
         env:
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

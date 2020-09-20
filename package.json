@@ -6,9 +6,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "test": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage",
+    "test": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --include='**/*.spec.ts'",
+    "e2e": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --include='**/*.e2e.ts'",
     "lint": "ng lint",
-    "test-headless": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage"
+    "test-headless": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --include='**/*.spec.ts'"
   },
   "repository": {
     "type": "git",
