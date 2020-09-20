@@ -28,7 +28,7 @@
     "@material-icons/font": "^1.0.4",
     "@openfonts/roboto_latin": "^1.44.1",
     "rxjs": "~6.6.3",
-    "sha512-crypt-ts": "^0.1.15",
+    "sha512-crypt-ts": "^0.1.16",
     "tslib": "^2.0.1",
     "zone.js": "~0.11.1"
   },
