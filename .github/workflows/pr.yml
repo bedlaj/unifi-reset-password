@@ -22,12 +22,10 @@ jobs:
       - name: Setup unifi instance
         run: |
           sudo apt-get update && sudo apt-get install ca-certificates apt-transport-https gnupg
+          wget -qO - https://www.mongodb.org/static/pgp/server-3.4.asc | sudo apt-key add -
+          echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
           echo 'deb https://www.ui.com/downloads/unifi/debian stable ubiquiti' | sudo tee /etc/apt/sources.list.d/100-ubnt-unifi.list
           sudo wget -O /etc/apt/trusted.gpg.d/unifi-repo.gpg https://dl.ui.com/unifi/unifi-repo.gpg
-          wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-          wget -qO - https://www.mongodb.org/static/pgp/server-3.4.asc | sudo apt-key add -
-          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-          echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
           sudo apt-mark hold openjdk-11-*
           sudo apt-get update && sudo apt-get install unifi -y
           sudo service unifi start
