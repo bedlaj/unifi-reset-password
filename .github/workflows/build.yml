@@ -21,4 +21,4 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm install
-          ng build --prod --base-href="/unifi-reset-password/"
+          ng build --configuration production --base-href="/unifi-reset-password/"

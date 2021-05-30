@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --configuration production --base-href=\"/unifi-reset-password/\"",
     "test": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage",
     "lint": "ng lint",
     "test-headless": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage"
