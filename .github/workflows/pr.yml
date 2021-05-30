@@ -19,6 +19,11 @@ jobs:
           npm install -g @angular/cli
           npm install
           npm run-script lint
+      - name: Build
+        run: |
+          npm install -g @angular/cli
+          npm install
+          ng build --configuration production --base-href="/unifi-reset-password/"
       - name: Test
         run: |
           npm install -g @angular/cli
