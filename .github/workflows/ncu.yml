@@ -37,4 +37,4 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           title: 'Automated npm-check-updates'
-          body: "${{ steps.ncu.outputs.ncuOutput }}"
+          body: "🤖 ``` ${{ steps.ncu.outputs.ncuOutput }} ```"
