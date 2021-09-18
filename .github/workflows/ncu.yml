@@ -1,0 +1,39 @@
+name: NPM Check Updates
+
+on:
+  schedule:
+    - cron:  '0 8 * * *'
+
+jobs:
+  ncu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install ncu
+        run: |
+          npm install -g npm-check-updates
+      - name: Execute ncu
+        id: ncu
+        run: |
+          NCU_OUTPUT=$(ncu -u)
+          npm install
+          NCU_OUTPUT="${NCU_OUTPUT//'%'/'%25'}"
+          NCU_OUTPUT="${NCU_OUTPUT//$'\n'/'%0A'}"
+          NCU_OUTPUT="${NCU_OUTPUT//$'\r'/'%0D'}"
+          echo "::set-output name=ncuOutput::$NCU_OUTPUT"
+      - name: Test
+        run: |
+          npm install -g @angular/cli
+          npm run-script test-headless
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: 'Automated npm-check-updates'
+          body: "${{ steps.ncu.outputs.ncuOutput }}"
