@@ -29,11 +29,6 @@ jobs:
           NCU_OUTPUT="${NCU_OUTPUT//$'\n'/'%0A'}"
           NCU_OUTPUT="${NCU_OUTPUT//$'\r'/'%0D'}"
           echo "::set-output name=ncuOutput::$NCU_OUTPUT"
-      - name: Test
-        run: |
-          npm install -g @angular/cli
-          ng build --configuration production --base-href="/unifi-reset-password/"
-          npm run-script test-headless
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
